@@ -1,0 +1,17 @@
+@use '../abstracts' as *;
+
+.card {
+  border-radius: 2rem;
+  padding: 1.5rem;
+  @include margin-gap(1rem);
+
+  &--mobile {
+    @media (max-width: 480px) {
+      padding: 1rem;
+    }
+  }
+
+  &--gray {
+    background-color: $light-gray;
+  }
+}
