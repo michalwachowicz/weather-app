@@ -10,6 +10,7 @@ module.exports = {
   },
   plugins: ["prettier"],
   rules: {
-    "prettier/prettier": "warning",
+    "prettier/prettier": "error",
+    "quotes": "single"
   },
 };
