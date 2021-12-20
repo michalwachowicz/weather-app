@@ -6,12 +6,67 @@
   @include margin-gap(1rem);
 
   &--mobile {
-    @media (max-width: 480px) {
+    @include mobile {
       padding: 1rem;
     }
   }
 
   &--gray {
     background-color: $light-gray;
+  }
+
+  &--additional {
+    &__icon {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+
+    &__text {
+      color: $text-light-gray;
+      font-size: 1.75rem;
+      font-weight: 300;
+    }
+  }
+
+  &__title {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  &__icon-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  &-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+
+    &__icon {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    &__title {
+      color: $text-gray;
+      font-size: 1rem;
+      font-weight: 400;
+    }
+  }
+}
+
+.additional-cards-wrapper {
+  display: flex;
+  gap: 1.5rem;
+
+  @include mobile {
+    flex-direction: column;
+  }
+
+  & > * {
+    flex: 1;
   }
 }

@@ -17,3 +17,9 @@
     margin-bottom: 0;
   }
 }
+
+@mixin mobile {
+  @media (max-width: 480px) {
+    @content;
+  }
+}
