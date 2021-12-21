@@ -2,10 +2,11 @@
 
 .additional-cards-wrapper {
   display: flex;
+  flex-direction: column;
   gap: 1.5rem;
 
-  @include mobile {
-    flex-direction: column;
+  @include desktop {
+    flex-direction: row;
   }
 
   & > * {
