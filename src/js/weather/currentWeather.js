@@ -1,3 +1,4 @@
+import getResponse from '../api';
 import Weather from './weather';
 
 class CurrentWeather extends Weather {
@@ -14,4 +15,11 @@ class CurrentWeather extends Weather {
   }
 }
 
-export default CurrentWeather;
+// units = 'metric' => Celsius, units = 'imperial' => Fahrenheit
+export default async function getCurrentWeather(location, units = 'metric') {
+  const response = await getResponse(`weather?q=${location}&units=${units}`);
+  if (!response.ok) throw new Error(response.statusText);
+
+  const data = await response.json();
+  return new CurrentWeather(data);
+}
