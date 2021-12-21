@@ -5,7 +5,7 @@ class HourlyForecast extends Weather {
   constructor(data) {
     super(data);
     this.hour = dayjs.unix(data.dt).format('h A');
-    this.temp = data.temp;
+    this.temp = data.temp.toFixed(0);
   }
 }
 

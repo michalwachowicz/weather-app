@@ -8,6 +8,7 @@ class ForecastWeather {
       .slice(1, 25)
       .map((hourData) => new HourlyForecast(hourData));
     this.daily = daily.map((dayData) => new DailyForecast(dayData));
+    this.daily[0].day = 'Today';
   }
 }
 

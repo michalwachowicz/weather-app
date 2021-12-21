@@ -8,7 +8,7 @@ class CurrentWeather extends Weather {
     this.name = data.name;
     this.lon = coord.lon;
     this.lat = coord.lat;
-    this.temp = main.temp;
+    this.temp = main.temp.toFixed(0);
     this.humidity = main.humidity;
     this.windSpeed = wind.speed;
     this.cloudiness = clouds.all;

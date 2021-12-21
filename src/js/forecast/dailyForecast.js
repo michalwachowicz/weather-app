@@ -6,8 +6,8 @@ class DailyForecast extends Weather {
     super(data);
     const { dt, temp } = data;
     this.day = dayjs.unix(dt).format('dddd');
-    this.minTemp = temp.min;
-    this.maxTemp = temp.max;
+    this.minTemp = temp.min.toFixed(0);
+    this.maxTemp = temp.max.toFixed(0);
   }
 }
 
