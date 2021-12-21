@@ -1,0 +1,33 @@
+@use '../abstracts' as *;
+
+.additional-cards-wrapper {
+  display: flex;
+  gap: 1.5rem;
+
+  @include mobile {
+    flex-direction: column;
+  }
+
+  & > * {
+    flex: 1;
+  }
+}
+
+#hourly {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+  overflow-x: scroll;
+
+  @include tablet {
+    gap: 1.25rem;
+  }
+
+  & > * {
+    flex: 1 0 auto;
+  }
+}
+
+#daily {
+  @include margin-gap(1rem);
+}

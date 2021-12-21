@@ -23,3 +23,9 @@
     @content;
   }
 }
+
+@mixin tablet {
+  @media (min-width: 480px) {
+    @content;
+  }
+}
