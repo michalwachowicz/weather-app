@@ -12,10 +12,7 @@ class ForecastWeather {
   }
 }
 
-export default async function getForecastWeather(
-  { lon, lat },
-  units = 'metric',
-) {
+export default async function getForecastWeather({ lon, lat }, units) {
   const response = await getResponse(
     `onecall?lon=${lon}&lat=${lat}&units=${units}&exclude=current,minutely,alerts`,
   );

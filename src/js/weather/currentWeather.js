@@ -15,11 +15,22 @@ class CurrentWeather extends Weather {
   }
 }
 
-// units = 'metric' => Celsius, units = 'imperial' => Fahrenheit
-export default async function getCurrentWeather(location, units = 'metric') {
+async function getCurrentWeather(location, units) {
   const response = await getResponse(`weather?q=${location}&units=${units}`);
   if (!response.ok) throw new Error(response.statusText);
 
   const data = await response.json();
   return new CurrentWeather(data);
 }
+
+async function getCurrentWeatherByCoords({ latitude, longitude }, units) {
+  const response = await getResponse(
+    `weather?lat=${latitude}&lon=${longitude}&units=${units}`,
+  );
+  if (!response.ok) throw new Error(response.statusText);
+
+  const data = await response.json();
+  return new CurrentWeather(data);
+}
+
+export { getCurrentWeather, getCurrentWeatherByCoords };
