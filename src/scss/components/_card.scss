@@ -30,7 +30,13 @@
 
   &--weather {
     background-color: $dark-card;
+    transition: transform 0.5s ease;
     @include box-shadow;
+
+    &:hover,
+    &:active {
+      transform: scale(1.02);
+    }
 
     &--hourly {
       width: 7rem;
