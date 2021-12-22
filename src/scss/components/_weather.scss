@@ -29,4 +29,46 @@
     margin-top: 4rem;
     @include margin-gap(1.5rem);
   }
+
+  &-error {
+    color: #fff;
+    text-align: center;
+
+    &__icon {
+      width: 5rem;
+      height: 5rem;
+      margin-bottom: 1.25rem;
+
+      path {
+        fill: $orange;
+      }
+    }
+
+    &__title {
+      margin-bottom: 0.5rem;
+      font-size: 2.5rem;
+    }
+
+    &__message {
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    &__solution {
+      color: $text-gray;
+      margin-left: 1rem;
+    }
+
+    &__message,
+    &__solution {
+      font-size: 1.2rem;
+      font-weight: 300;
+    }
+
+    &__solutions {
+      display: inline-block;
+      margin: 0 auto;
+      text-align: left;
+    }
+  }
 }
