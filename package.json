@@ -18,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/michalwachowicz/weather-app/issues"
   },
-  "homepage": "https://github.com/michalwachowicz/weather-app#readme",
+  "homepage": "https://michalwachowicz.github.io/weather-app",
   "devDependencies": {
     "@babel/core": "^7.16.5",
     "@babel/preset-env": "^7.16.5",
