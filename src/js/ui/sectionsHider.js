@@ -1,4 +1,5 @@
 const sections = [
+  document.querySelector('.loading-screen'),
   document.querySelector('.weather-info'),
   document.querySelector('.weather-error'),
 ];

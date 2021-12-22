@@ -5,25 +5,46 @@ import {
 import getForecastWeather from '../forecast/forecastWeather';
 import updateCurrentWeather from './components/currentWeatherUi';
 import addWeatherCards from './components/weatherCard';
+import hideSecions from './sectionsHider';
+import displayError from './components/error';
+import displayLoadingScreen from './components/loadingScreen';
 
-// units = 'metric' => Celsius, units = 'imperial' => Fahrenheit
-async function displayWeather(city, units = 'metric') {
-  const currentWeather = await getCurrentWeather(city, units);
-  const forecastWeather = await getForecastWeather(currentWeather, units);
+const weatherComponent = document.querySelector('.weather-info');
 
+function updateWeather(currentWeather, forecastWeather) {
   updateCurrentWeather(currentWeather);
   addWeatherCards(forecastWeather);
 
-  // TODO: Hide all components and show weather component
+  hideSecions();
+  weatherComponent.classList.remove('hidden');
+}
+
+// units = 'metric' => Celsius, units = 'imperial' => Fahrenheit
+async function displayWeather(city, units = 'metric') {
+  displayLoadingScreen();
+
+  try {
+    const currentWeather = await getCurrentWeather(city, units);
+    const forecastWeather = await getForecastWeather(currentWeather, units);
+
+    updateWeather(currentWeather, forecastWeather);
+  } catch (error) {
+    displayError(error);
+  }
 }
 
 // units = 'metric' => Celsius, units = 'imperial' => Fahrenheit
 async function displayWeatherByCoords(coords, units = 'metric') {
-  const currentWeather = await getCurrentWeatherByCoords(coords, units);
-  const forecastWeather = await getForecastWeather(currentWeather, units);
+  displayLoadingScreen();
 
-  updateCurrentWeather(currentWeather);
-  addWeatherCards(forecastWeather);
+  try {
+    const currentWeather = await getCurrentWeatherByCoords(coords, units);
+    const forecastWeather = await getForecastWeather(currentWeather, units);
+
+    updateWeather(currentWeather, forecastWeather);
+  } catch (error) {
+    displayError(error);
+  }
 }
 
 export { displayWeather, displayWeatherByCoords };
