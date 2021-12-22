@@ -1,4 +1,5 @@
 import getResponse from '../api';
+import RecentCity from '../recentCity';
 import Weather from './weather';
 
 class CurrentWeather extends Weather {
@@ -20,6 +21,7 @@ async function getCurrentWeather(location, units) {
   if (!response.ok) throw new Error(response.statusText);
 
   const data = await response.json();
+  RecentCity.setCity(data.name);
   return new CurrentWeather(data);
 }
 

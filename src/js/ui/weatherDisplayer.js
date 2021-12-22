@@ -8,6 +8,8 @@ import addWeatherCards from './components/weatherCard';
 import hideSecions from './sectionsHider';
 import displayError from './components/error';
 import displayLoadingScreen from './components/loadingScreen';
+import getCurrentLocation from '../locationService';
+import RecentCity from '../recentCity';
 
 const weatherComponent = document.querySelector('.weather-info');
 
@@ -47,4 +49,27 @@ async function displayWeatherByCoords(coords, units = 'metric') {
   }
 }
 
-export { displayWeather, displayWeatherByCoords };
+async function displayCurrentLocationWeather() {
+  displayLoadingScreen();
+
+  try {
+    const response = await getCurrentLocation();
+    displayWeatherByCoords(response.coords, localStorage.units);
+  } catch {
+    displayWeather('London', localStorage.units);
+  }
+}
+
+async function displayRecentCityWeather() {
+  if (RecentCity.getCity()) {
+    displayWeather(RecentCity.getCity(), localStorage.units);
+  } else {
+    displayCurrentLocationWeather();
+  }
+}
+
+export {
+  displayWeather,
+  displayCurrentLocationWeather,
+  displayRecentCityWeather,
+};
