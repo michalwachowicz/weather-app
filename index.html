@@ -42,7 +42,20 @@
         <label for="temp-switch" id="temp-switch__label"></label>
       </form>
       <main class="weather">
-        <section class="weather-info">
+        <section class="loading-screen hidden">
+          <svg
+            class="loading-screen__icon"
+            viewBox="0 0 41 40"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M37 25.8334C37 27.8225 36.2098 29.7301 34.8033 31.1367C33.3968 32.5432 31.4891 33.3334 29.5 33.3334H11.1666C9.17752 33.3334 7.26987 32.5432 5.86334 31.1367C4.45682 29.7301 3.66665 27.8225 3.66665 25.8334C3.66665 23.8442 4.45682 21.9366 5.86334 20.5301C7.26987 19.1235 9.17752 18.3334 11.1666 18.3334V15.8334C11.1666 13.4022 12.1324 11.0706 13.8515 9.35154C15.5706 7.63246 17.9022 6.66669 20.3333 6.66669C22.7645 6.66669 25.096 7.63246 26.8151 9.35154C28.5342 11.0706 29.5 13.4022 29.5 15.8334V18.3334C31.4891 18.3334 33.3968 19.1235 34.8033 20.5301C36.2098 21.9366 37 23.8442 37 25.8334Z"
+              fill="#DEE2E6"
+            />
+          </svg>
+        </section>
+        <section class="weather-info hidden">
           <section class="weather-info__today">
             <h2 class="weather-info__today__city">London</h2>
             <h1 class="weather-info__today__temp">0°</h1>
