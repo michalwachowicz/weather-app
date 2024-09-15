@@ -1,0 +1,5 @@
+@use "../abstracts/theme" as *;
+
+body {
+  background-color: get-color("main");
+}
