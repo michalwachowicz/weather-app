@@ -13,6 +13,14 @@
       padding: 1rem;
     }
 
+    &-icon {
+      @include square(1.5rem);
+
+      > svg {
+        @include square(100%);
+      }
+    }
+
     &-title {
       color: get-color("text-darker");
       font-size: 1.25rem;
@@ -50,6 +58,18 @@
       display: flex;
       flex-wrap: wrap;
       gap: 2rem;
+    }
+
+    &-icon {
+      @include square(2.5rem);
+
+      > svg {
+        @include square(100%);
+
+        path {
+          fill: get-color("text-dark");
+        }
+      }
     }
 
     &-title {
