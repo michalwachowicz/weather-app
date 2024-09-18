@@ -1,0 +1,10 @@
+@use "../abstracts/theme" as *;
+
+.card {
+  border-radius: 2rem;
+  background-color: get-color("card");
+
+  &-search {
+    padding: 1.5rem;
+  }
+}
