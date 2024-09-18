@@ -15,4 +15,31 @@
       background-color: get-color("main-active");
     }
   }
+
+  &-switch {
+    $pad: 0.25rem;
+
+    border-radius: 2rem;
+    min-width: 5rem;
+    width: 5rem;
+    padding: $pad;
+    background-color: get-color("input");
+
+    > .switch-ball {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 100%;
+      background-color: get-color("main");
+      font-size: 1rem;
+      font-weight: 900;
+      transition: transform 0.3s ease;
+
+      &.switched {
+        transform: translateX(calc(100% - 2 * $pad));
+      }
+    }
+  }
 }
