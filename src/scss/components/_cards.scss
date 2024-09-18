@@ -29,7 +29,7 @@
   &-sections {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 2rem;
   }
 
   &-search {
@@ -43,11 +43,13 @@
 
   &-additional {
     flex: 1;
+    min-width: 220px;
     padding: 1.5rem;
 
     &-container {
       display: flex;
-      gap: 1.5rem;
+      flex-wrap: wrap;
+      gap: 2rem;
     }
 
     &-title {
