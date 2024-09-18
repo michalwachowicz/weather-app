@@ -1,11 +1,14 @@
 $colors: (
-  main: #09090b,
+  main: #f97316,
+  main-active: #ea580c,
+  bg: #09090b,
   card-dark: #18181b,
   card: #27272a,
   input: #52525b,
   text: #fafafa,
   text-dark: #d4d4d8,
   text-darker: #a1a1aa,
+  shadow: rgba(0, 0, 0, 0.25),
 );
 
 @function get-color($color) {
