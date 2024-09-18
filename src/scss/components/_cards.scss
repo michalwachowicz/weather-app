@@ -5,6 +5,8 @@
   background-color: get-color("card");
 
   &-search {
+    display: flex;
+    gap: 1rem;
     padding: 1.5rem;
   }
 }
