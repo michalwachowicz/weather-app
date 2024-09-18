@@ -1,4 +1,4 @@
-@use "../abstracts/theme" as *;
+@use "../abstracts" as *;
 
 .btn {
   font-size: 1rem;
@@ -26,15 +26,12 @@
     background-color: get-color("input");
 
     > .switch-ball {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 2.5rem;
-      height: 2.5rem;
-      border-radius: 100%;
-      background-color: get-color("main");
+      @include flex-center();
+      @include circle(2.5rem);
+
       font-size: 1rem;
       font-weight: 900;
+      background-color: get-color("main");
       transition: transform 0.3s ease;
 
       &.switched {
