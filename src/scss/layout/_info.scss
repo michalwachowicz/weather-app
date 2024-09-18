@@ -1,0 +1,36 @@
+@use "../abstracts" as *;
+
+.info {
+  margin: 4rem 0;
+  color: get-color("text");
+  text-align: center;
+
+  &-city {
+    margin-bottom: 1rem;
+    font-size: 4rem;
+    font-weight: 900;
+
+    @include mobile-media {
+      font-size: 3rem;
+    }
+  }
+
+  &-temperature {
+    margin-bottom: 0.5rem;
+    font-size: 9rem;
+    font-weight: 300;
+
+    @include mobile-media {
+      font-size: 8rem;
+    }
+  }
+
+  &-conditions {
+    font-size: 2rem;
+    font-weight: 300;
+
+    @include mobile-media {
+      font-size: 1.5rem;
+    }
+  }
+}
