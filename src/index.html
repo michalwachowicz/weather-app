@@ -7,7 +7,7 @@
   </head>
   <body>
     <div class="container">
-      <div class="card card-search">
+      <div class="card card-section card-search">
         <form class="searchbar">
           <input
             type="text"
@@ -21,10 +21,55 @@
           <div class="switch-ball">°C</div>
         </button>
       </div>
+
       <div class="info">
         <div class="info-city">London</div>
         <div class="info-temperature">0°</div>
         <div class="info-conditions">Mostly sunny</div>
+      </div>
+
+      <div class="card-sections">
+        <div class="card card-section card-hourly">
+          <div class="card-section-title-container">
+            <!-- card-section-icon -->
+            <h2 class="card-section-title">HOURLY FORECAST</h2>
+          </div>
+          <div class="card-hourly-cards"></div>
+        </div>
+
+        <div class="card card-section card-weekly">
+          <div class="card-section-title-container">
+            <!-- card-section-icon -->
+            <h2 class="card-section-title">WEEKLY FORECAST</h2>
+          </div>
+          <div class="card-weekly-cards"></div>
+        </div>
+
+        <div class="card-additional-container">
+          <div class="card card-additional card-humidity">
+            <h2 class="card-additional-title">Humidity</h2>
+            <div class="card-additional-info">
+              <div class="card-additional-icon"></div>
+              <div class="card-additional-value">49%</div>
+            </div>
+          </div>
+
+          <div class="card card-additional card-cloudiness">
+            <h2 class="card-additional-title">Cloudiness</h2>
+            <div class="card-additional-info">
+              <div class="card-additional-icon"></div>
+              <div class="card-additional-value">0%</div>
+            </div>
+          </div>
+
+          <div class="card card-additional card-windspeed">
+            <h2 class="card-additional-title">Wind Speed</h2>
+            <div class="card-additional-info">
+              <div class="card-additional-icon"></div>
+              <div class="card-additional-value">4 m/s</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </body>
