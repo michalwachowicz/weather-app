@@ -1,0 +1,19 @@
+@mixin flex-center() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin circle($size) {
+  border-radius: 100%;
+  min-width: $size;
+  width: $size;
+  min-height: $size;
+  height: $size;
+}
+
+@mixin mobile-media() {
+  @media screen and (max-width: 480px) {
+    @content;
+  }
+}
