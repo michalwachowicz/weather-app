@@ -4,12 +4,17 @@
   align-items: center;
 }
 
-@mixin circle($size) {
-  border-radius: 100%;
+@mixin square($size) {
   min-width: $size;
   width: $size;
   min-height: $size;
   height: $size;
+}
+
+@mixin circle($size) {
+  @include square($size);
+
+  border-radius: 100%;
 }
 
 @mixin mobile-media() {
