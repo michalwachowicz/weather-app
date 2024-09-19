@@ -1,5 +1,5 @@
 import searchIcon from "../../assets/icons/ui/search.svg";
-import loadWeather from "../domUpdater";
+import domUpdater from "../domUpdater";
 import weatherApi from "../weatherApi";
 
 export default function initializeSearchbar(currentUnit) {
@@ -23,7 +23,7 @@ export default function initializeSearchbar(currentUnit) {
 
     const { value } = searchInput;
 
-    loadWeather(value);
+    domUpdater.loadWeather(value);
     searchInput.value = "";
   });
 
@@ -43,6 +43,6 @@ export default function initializeSearchbar(currentUnit) {
     }
 
     weatherApi.setCurrentUnit(unit);
-    loadWeather(weatherApi.getCurrentAddress());
+    domUpdater.loadWeather(weatherApi.getCurrentAddress());
   });
 }

@@ -4,6 +4,7 @@ import updateHourlySection from "./sections/hourlySection";
 import updateWeeklySection from "./sections/weeklySection";
 import weatherApi from "./weatherApi";
 import loadingScreen from "./components/loadingScreen";
+import getCurrentCity from "./geoApi";
 
 const updateDOM = (data) => {
   loadingScreen.close();
@@ -19,7 +20,7 @@ const updateDOM = (data) => {
   updateWeeklySection(data);
 };
 
-export default async function loadWeather(address) {
+const loadWeather = async (address) => {
   loadingScreen.open();
 
   const weather = await weatherApi.getWeather(
@@ -28,4 +29,13 @@ export default async function loadWeather(address) {
   );
 
   updateDOM(weather);
-}
+};
+
+const loadCurrentLocationWeather = async () => {
+  loadingScreen.open();
+
+  const city = await getCurrentCity();
+  loadWeather(city || "London");
+};
+
+export default { loadWeather, loadCurrentLocationWeather };
