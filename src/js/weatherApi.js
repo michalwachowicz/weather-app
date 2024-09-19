@@ -17,10 +17,15 @@ const fetchData = async (searchQuery) => {
   }
 };
 
+const round = (num) => Math.round(num * 10) / 10;
+const toFahrenheit = (temp) => temp * (9 / 5) + 32;
+const formatTemperature = (temp, unit) =>
+  unit === "celsius" ? round(temp) : round(toFahrenheit(temp));
+
 const getHour = (datetime) => datetime.split(":")[0];
 const getMinutes = (datetime) => datetime.split(":")[1];
 
-const getHourlyForecast = ({ currentConditions, days }) => {
+const getHourlyForecast = ({ currentConditions, days }, unit) => {
   const { datetime, sunrise, sunset } = currentConditions;
 
   const currentHour = parseInt(getHour(datetime), 10);
@@ -59,32 +64,32 @@ const getHourlyForecast = ({ currentConditions, days }) => {
     return {
       hour: i === 0 ? "Now" : hour.datetime.split(":")[0],
       icon: hour.icon,
-      temperature: hour.temp,
+      temperature: formatTemperature(hour.temp, unit),
     };
   });
 };
 
-const getWeeklyForecast = ({ days }) =>
+const getWeeklyForecast = ({ days }, unit) =>
   days.map(({ datetime, tempmin, tempmax, icon }, index) => ({
     day: index === 0 ? "Today" : format(new Date(datetime), "EEEE"),
-    tempmin,
-    tempmax,
+    tempmin: formatTemperature(tempmin, unit),
+    tempmax: formatTemperature(tempmax, unit),
     icon,
   }));
 
-const getWeather = async (address) => {
+const getWeather = async (address, unit = "celsius") => {
   const data = await fetchData(address);
   if (!data) return null;
 
   const { temp, conditions, humidity, cloudcover, windspeed } =
     data.currentConditions;
-  const weekly = getWeeklyForecast(data);
-  const hourly = getHourlyForecast(data);
+  const weekly = getWeeklyForecast(data, unit);
+  const hourly = getHourlyForecast(data, unit);
 
   return {
     address: data.resolvedAddress,
     cloudiness: cloudcover,
-    temperature: temp,
+    temperature: formatTemperature(temp, unit),
     conditions,
     humidity,
     windspeed,
