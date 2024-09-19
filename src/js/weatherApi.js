@@ -2,6 +2,9 @@ import { format } from "date-fns";
 
 const API_KEY = "QRA5RNJTETY4YPCFFTM6QWMBA";
 
+let currentUnit = localStorage.unit || "celsius";
+let currentAddress = "";
+
 const fetchData = async (searchQuery) => {
   const target = searchQuery.trim().replaceAll(" ", "+");
   const query = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${target}/next7days?unitGroup=metric&key=${API_KEY}&contentType=json`;
@@ -77,19 +80,34 @@ const getWeeklyForecast = ({ days }, unit) =>
     icon,
   }));
 
-const getWeather = async (address, unit = "celsius") => {
+const getCurrentAddress = () => currentAddress;
+const setCurrentAddress = (address) => {
+  currentAddress = address;
+};
+
+const getCurrentUnit = () => currentUnit;
+const setCurrentUnit = (unit) => {
+  currentUnit = unit;
+  localStorage.unit = unit;
+};
+
+const getWeather = async (address) => {
   const data = await fetchData(address);
   if (!data) return null;
 
+  const { resolvedAddress } = data;
   const { temp, conditions, humidity, cloudcover, windspeed } =
     data.currentConditions;
-  const weekly = getWeeklyForecast(data, unit);
-  const hourly = getHourlyForecast(data, unit);
+
+  const weekly = getWeeklyForecast(data, currentUnit);
+  const hourly = getHourlyForecast(data, currentUnit);
+
+  setCurrentAddress(resolvedAddress);
 
   return {
-    address: data.resolvedAddress,
+    address: resolvedAddress,
     cloudiness: cloudcover,
-    temperature: formatTemperature(temp, unit),
+    temperature: formatTemperature(temp, currentUnit),
     conditions,
     humidity,
     windspeed,
@@ -98,4 +116,9 @@ const getWeather = async (address, unit = "celsius") => {
   };
 };
 
-export default getWeather;
+export default {
+  getCurrentAddress,
+  getCurrentUnit,
+  setCurrentUnit,
+  getWeather,
+};
