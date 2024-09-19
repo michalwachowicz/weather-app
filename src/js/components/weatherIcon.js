@@ -15,6 +15,7 @@ const ICONS = importAll(
   require.context("../../assets/icons/weather", false, /\.svg$/)
 );
 
-export default function getIcon(key) {
-  return ICONS[key];
-}
+const getIcon = (key) => ICONS[key];
+const getIcons = () => ICONS;
+
+export default { getIcon, getIcons };

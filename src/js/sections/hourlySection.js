@@ -1,4 +1,4 @@
-import getIcon from "../components/weatherIcon";
+import weatherIcon from "../components/weatherIcon";
 
 const hourlyCards = document.querySelector(".card-hourly-cards");
 
@@ -8,7 +8,7 @@ export default function updateHourlySection({ hourly }) {
   hourly.forEach(({ hour, icon, temperature }) => {
     const card = document.createElement("div");
     card.className = "card card-dark card-hour";
-    card.innerHTML = getIcon(icon);
+    card.innerHTML = weatherIcon.getIcon(icon);
 
     const hourElement = document.createElement("div");
     hourElement.className = "card-hour-hour";

@@ -1,4 +1,4 @@
-import getIcon from "../components/weatherIcon";
+import weatherIcon from "../components/weatherIcon";
 
 const weeklyCards = document.querySelector(".card-weekly-cards");
 
@@ -8,7 +8,7 @@ export default function updateWeeklySection({ weekly }) {
   weekly.forEach(({ day, tempmin, tempmax, icon }) => {
     const card = document.createElement("div");
     card.className = "card card-dark card-day";
-    card.innerHTML = getIcon(icon);
+    card.innerHTML = weatherIcon.getIcon(icon);
 
     const dayElement = document.createElement("div");
     dayElement.className = "card-day-day";
