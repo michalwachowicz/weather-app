@@ -3,14 +3,16 @@ import updateAdditionalSection from "./sections/additionalSection";
 import updateHourlySection from "./sections/hourlySection";
 import updateWeeklySection from "./sections/weeklySection";
 import weatherApi from "./weatherApi";
+import errorMessage from "./components/errorMessage";
 import loadingScreen from "./components/loadingScreen";
 import getCurrentCity from "./geoApi";
 
 const updateDOM = (data) => {
+  errorMessage.close();
   loadingScreen.close();
 
   if (!data) {
-    // TODO: Show error message
+    errorMessage.open();
     return;
   }
 
@@ -21,6 +23,7 @@ const updateDOM = (data) => {
 };
 
 const loadWeather = async (address) => {
+  errorMessage.close();
   loadingScreen.open();
 
   const weather = await weatherApi.getWeather(
@@ -32,6 +35,7 @@ const loadWeather = async (address) => {
 };
 
 const loadCurrentLocationWeather = async () => {
+  errorMessage.close();
   loadingScreen.open();
 
   const city = await getCurrentCity();
