@@ -1,3 +1,5 @@
+import { format } from "date-fns";
+
 const API_KEY = "QRA5RNJTETY4YPCFFTM6QWMBA";
 
 const fetchData = async (searchQuery) => {
@@ -15,25 +17,32 @@ const fetchData = async (searchQuery) => {
   }
 };
 
+const getWeeklyForecast = ({ days }) =>
+  days.map(({ datetime, tempmin, tempmax, icon }, index) => ({
+    day: index === 0 ? "Today" : format(new Date(datetime), "EEEE"),
+    tempmin,
+    tempmax,
+    icon,
+  }));
+
 const getWeather = async (address) => {
   const data = await fetchData(address);
   if (!data) return null;
 
-  const conditions = data.currentConditions;
+  const { temp, conditions, humidity, cloudcover, windspeed } =
+    data.currentConditions;
+  const weekly = getWeeklyForecast(data);
 
-  /*
-  TODO:
-  - Hourly forecast (with sunset/sunrise)
-  - Weekly forecast
-  */
+  // TODO: Hourly forecast (with sunset/sunrise)
 
   return {
     address: data.resolvedAddress,
-    temperature: conditions.temp,
-    conditions: conditions.conditions,
-    humidity: conditions.humidity,
-    cloudiness: conditions.cloudcover,
-    windspeed: conditions.windspeed,
+    cloudiness: cloudcover,
+    temperature: temp,
+    conditions,
+    humidity,
+    windspeed,
+    weekly,
   };
 };
 
