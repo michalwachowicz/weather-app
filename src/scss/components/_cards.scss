@@ -6,6 +6,7 @@
 
   &-dark {
     background-color: get-color("card-dark");
+    box-shadow: 0 0 1rem 0 get-color("shadow");
   }
 
   &-section {
@@ -96,27 +97,43 @@
     }
   }
 
-  &-hourly {
+  &-hourly,
+  &-weekly {
     flex-direction: column;
 
     &-cards {
       display: flex;
-      gap: 1.5rem;
-      overflow: scroll;
-      padding: 0.5rem;
+    }
+  }
+
+  &-hourly-cards {
+    gap: 1.5rem;
+    overflow: scroll;
+    padding: 0.5rem;
+  }
+
+  &-weekly-cards {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &-hour,
+  &-day {
+    display: flex;
+    align-items: center;
+    color: get-color("text");
+
+    > svg {
+      @include square(2rem);
     }
   }
 
   &-hour {
     @include square(8rem);
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: space-between;
+    flex-direction: column;
     padding: 0.5rem;
-    color: get-color("text");
-    box-shadow: 0 0 1rem 0 get-color("shadow");
 
     &-hour {
       font-size: 1.125rem;
@@ -127,9 +144,35 @@
       font-size: 1.25rem;
       font-weight: 300;
     }
+  }
 
-    > svg {
-      @include square(2rem);
+  &-day {
+    padding: 1rem 1.5rem;
+    font-size: 1.25rem;
+
+    > * {
+      flex: 1;
+    }
+
+    &-day {
+      font-weight: 700;
+      margin-right: auto;
+    }
+
+    &-temp {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      margin-left: auto;
+      gap: 0.5rem;
+
+      &-max {
+        font-weight: 700;
+      }
+
+      &-min {
+        font-weight: 300;
+      }
     }
   }
 }
