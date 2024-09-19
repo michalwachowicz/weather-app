@@ -15,6 +15,7 @@ const fetchData = async (searchQuery) => {
 
     return data;
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error(error);
     return null;
   }
