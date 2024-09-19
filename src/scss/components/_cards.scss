@@ -4,6 +4,10 @@
   border-radius: 2rem;
   background-color: get-color("card");
 
+  &-dark {
+    background-color: get-color("card-dark");
+  }
+
   &-section {
     display: flex;
     gap: 1rem;
@@ -89,6 +93,43 @@
       color: get-color("text-dark");
       font-size: 1.75rem;
       font-weight: 400;
+    }
+  }
+
+  &-hourly {
+    flex-direction: column;
+
+    &-cards {
+      display: flex;
+      gap: 1.5rem;
+      overflow: scroll;
+      padding: 0.5rem;
+    }
+  }
+
+  &-hour {
+    @include square(8rem);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+    color: get-color("text");
+    box-shadow: 0 0 1rem 0 get-color("shadow");
+
+    &-hour {
+      font-size: 1.125rem;
+      font-weight: 700;
+    }
+
+    &-temp {
+      font-size: 1.25rem;
+      font-weight: 300;
+    }
+
+    > svg {
+      @include square(2rem);
     }
   }
 }
