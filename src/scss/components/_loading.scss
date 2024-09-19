@@ -1,0 +1,30 @@
+@use "../abstracts" as *;
+
+.loading-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: get-color("text");
+  font-size: 2.5rem;
+  font-weight: 700;
+
+  &-icon {
+    margin-top: 6rem;
+    margin-bottom: 2.5rem;
+    animation: bounce 1s infinite;
+
+    > svg {
+      @include square(8rem);
+    }
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(2rem);
+  }
+
+  50% {
+    transform: translateY(-2rem);
+  }
+}
