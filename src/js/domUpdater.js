@@ -3,8 +3,11 @@ import updateAdditionalSection from "./sections/additionalSection";
 import updateHourlySection from "./sections/hourlySection";
 import updateWeeklySection from "./sections/weeklySection";
 import weatherApi from "./weatherApi";
+import loadingScreen from "./components/loadingScreen";
 
 const updateDOM = (data) => {
+  loadingScreen.close();
+
   if (!data) {
     // TODO: Show error message
     return;
@@ -17,7 +20,7 @@ const updateDOM = (data) => {
 };
 
 export default async function loadWeather(address) {
-  // TODO: Add loading screen
+  loadingScreen.open();
 
   const weather = await weatherApi.getWeather(
     address,
