@@ -2,13 +2,20 @@ import searchIcon from "../../assets/icons/ui/search.svg";
 import loadWeather from "../domUpdater";
 import weatherApi from "../weatherApi";
 
-export default function initializeSearchbar() {
+export default function initializeSearchbar(currentUnit) {
   const searchbar = document.querySelector(".searchbar");
   const searchInput = searchbar.querySelector(".searchbar-input");
   const searchBtn = searchbar.querySelector(".btn-search");
 
   const switchBtn = document.querySelector(".btn-switch");
   const switchBall = switchBtn.querySelector(".switch-ball");
+
+  const switchedClass = "switched";
+
+  if (currentUnit !== "celsius") {
+    switchBall.classList.add(switchedClass);
+    switchBall.textContent = "°F";
+  }
 
   searchBtn.innerHTML = searchIcon;
   searchbar.addEventListener("submit", (e) => {
@@ -21,7 +28,6 @@ export default function initializeSearchbar() {
   });
 
   switchBtn.addEventListener("click", () => {
-    const switchedClass = "switched";
     let unit;
 
     if (switchBall.classList.contains(switchedClass)) {
